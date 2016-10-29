@@ -1,3 +1,7 @@
+const React = require('react');
+const ReactDOM = require('react-dom');
+
+
 var TweetBox = React.createClass({
   // state setter
   getInitialState: function(){
@@ -41,7 +45,7 @@ var TweetBox = React.createClass({
           <strong className="bg-danger">{overflowText}</strong>
         </div>
       );
-    } 
+    }
   },
   render: function() {
     return (
