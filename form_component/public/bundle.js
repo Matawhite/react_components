@@ -36953,6 +36953,25 @@
 	var Form = React.createClass({
 	  displayName: "Form",
 
+
+	  /*setting state on load*/
+	  getInitialState: function getInitialState() {
+	    return {
+	      num1: 0,
+	      num2: 0,
+	      text: ""
+	    };
+	  },
+
+	  /* Everytime the form changes value, the state will get recaluated*/
+	  handleChange: function handleChange(event) {
+	    var newState = {};
+	    newState[event.target.id] = event.target.value;
+	    this.setState(newState, function () {
+	      console.log(newState);
+	    });
+	  },
+
 	  render: function render() {
 	    return React.createElement(
 	      "div",
@@ -37010,7 +37029,7 @@
 	                        "Number 1"
 	                      )
 	                    ),
-	                    React.createElement("input", { type: "number", value: "", className: "form-control", id: "num1", required: true }),
+	                    React.createElement("input", { type: "number", value: this.state.value, className: "form-control", id: "num1", onChange: this.handleChange, required: true }),
 	                    React.createElement(
 	                      "h4",
 	                      null,
@@ -37020,7 +37039,7 @@
 	                        "Number 2"
 	                      )
 	                    ),
-	                    React.createElement("input", { type: "number", value: "", className: "form-control", id: "num2", required: true }),
+	                    React.createElement("input", { type: "number", value: this.state.value, className: "form-control", id: "num2", onChange: this.handleChange, required: true }),
 	                    React.createElement(
 	                      "h4",
 	                      null,
@@ -37030,7 +37049,7 @@
 	                        "Random Text"
 	                      )
 	                    ),
-	                    React.createElement("input", { type: "text", value: "", className: "form-control", id: "text", required: true })
+	                    React.createElement("input", { type: "text", value: this.state.value, className: "form-control", id: "text", onChange: this.handleChange, required: true })
 	                  )
 	                )
 	              )
@@ -37064,12 +37083,20 @@
 	                  React.createElement(
 	                    "h2",
 	                    null,
-	                    "Some Numbers Here"
+	                    this.state.num1,
+	                    " + ",
+	                    this.state.num2,
+	                    " = ",
+	                    parseInt(this.state.num1) + parseInt(this.state.num2)
 	                  ),
 	                  React.createElement(
 	                    "h2",
 	                    null,
-	                    "Some Numbers Here"
+	                    "Original Text: ",
+	                    this.state.text,
+	                    React.createElement("br", null),
+	                    "Reversed:",
+	                    this.state.text.split('').reverse().join("")
 	                  )
 	                )
 	              )
