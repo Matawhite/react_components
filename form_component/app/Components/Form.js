@@ -13,11 +13,11 @@ var Form = React.createClass({
 
   /* Everytime the form changes value, the state will get recaluated*/
   handleChange: function(event){
+
     var newState = {};
     newState[event.target.id] = event.target.value;
-    this.setState(newState, function(){
-      console.log(newState)
-    });
+    this.setState(newState); //take callback as a second argument if you need it.
+    console.log(newState)
   },
 
   render: function(){
@@ -62,7 +62,7 @@ var Form = React.createClass({
                     <h2>{this.state.num1} + {this.state.num2} = {parseInt(this.state.num1) + parseInt(this.state.num2)}</h2>
                     <h2>Original Text: {this.state.text}
                       <br/>
-                      Reversed:{this.state.text.split('').reverse().join("")}</h2>
+                      Reversed Text:  {this.state.text.split('').reverse().join("")}</h2>
                   </div>
                 </form>
               </div>

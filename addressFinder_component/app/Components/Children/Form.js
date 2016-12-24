@@ -9,7 +9,8 @@ const Form = React.createClass({
   },
 
   handleChange: function(event){
-    var newState = {};
+    event.preventDefault();
+    let newState = {};
     newState[event.target.id] = event.target.value;
     this.setState(newState)
     console.log(newState)

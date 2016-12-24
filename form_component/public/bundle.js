@@ -36965,11 +36965,11 @@
 
 	  /* Everytime the form changes value, the state will get recaluated*/
 	  handleChange: function handleChange(event) {
+
 	    var newState = {};
 	    newState[event.target.id] = event.target.value;
-	    this.setState(newState, function () {
-	      console.log(newState);
-	    });
+	    this.setState(newState); //take callback as a second argument if you need it.
+	    console.log(newState);
 	  },
 
 	  render: function render() {
@@ -37095,7 +37095,7 @@
 	                    "Original Text: ",
 	                    this.state.text,
 	                    React.createElement("br", null),
-	                    "Reversed:",
+	                    "Reversed Text:  ",
 	                    this.state.text.split('').reverse().join("")
 	                  )
 	                )

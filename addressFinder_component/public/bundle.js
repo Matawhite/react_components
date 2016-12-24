@@ -37044,6 +37044,7 @@
 	  },
 
 	  handleChange: function handleChange(event) {
+	    event.preventDefault();
 	    var newState = {};
 	    newState[event.target.id] = event.target.value;
 	    this.setState(newState);
@@ -38088,19 +38089,22 @@
 /* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	var axios = __webpack_require__(292);
 
 	var geocodeAPI = "35e5548c618555b1a43eb4759d26b260";
+	var key = '92aee7d4139da0c0306f02f8742d81fd';
 
 	var helpers = {
 	  runQuery: function runQuery(location) {
 	    console.log(location);
-	    var queryURL = "http://api.opencagedata.com/geocode/v1/json?query=" + location + "&.pretty=1&key=" + geocodeAPI;
+	    var queryURL = 'http://api.openweathermap.org/data/2.5/weather?q=' + location + '&appid=' + key;
 	    return axios.get(queryURL).then(function (response) {
-	      console.log(response.data.results[0].formatted);
-	      return response.data.results[0].formatted;
+	      console.log(response.data.weather);
+	      return response.data.weather[0].id;
+	    }).catch(function (err) {
+	      console.log(err);
 	    });
 	  }
 	};
